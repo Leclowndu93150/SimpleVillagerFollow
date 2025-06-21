@@ -3,6 +3,7 @@ package com.leclowndu93150.simple_villager_follow.mixin;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.entity.EntityAccess;
 import net.minecraft.world.level.entity.PersistentEntitySectionManager;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +18,7 @@ public class PersistentEntitySectionManagerMixin<T extends EntityAccess> {
     private void onAddEntity(T pEntity, boolean pWorldGenSpawned, CallbackInfoReturnable<Boolean> cir) {
         if (pEntity instanceof AbstractVillager villager && !villager.level().isClientSide) {
             villager.goalSelector.addGoal(3, new TemptGoal(villager, 1.0,
-                    stack -> stack.is(Items.EMERALD) || stack.is(Items.EMERALD_BLOCK), false));
+                    Ingredient.of(Items.EMERALD, Items.EMERALD_BLOCK), false));
         }
     }
 
