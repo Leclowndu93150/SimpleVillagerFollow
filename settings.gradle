@@ -48,4 +48,3 @@ rootProject.name = 'Simple Villager Follow'
 include('common')
 include('fabric')
 include('neoforge')
-include('forge')
