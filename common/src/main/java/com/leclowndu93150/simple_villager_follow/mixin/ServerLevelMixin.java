@@ -18,7 +18,7 @@ public class ServerLevelMixin {
     @Inject(method = "addFreshEntity", at = @At("HEAD"))
     private void onAddFreshEntity(Entity entity, CallbackInfoReturnable<Boolean> cir) {
         if (entity instanceof AbstractVillager villager && !villager.level().isClientSide) {
-            villager.goalSelector.addGoal(3, new TemptGoal(villager, 1.0,
+            villager.goalSelector.addGoal(3, new TemptGoal(villager, 0.5,
                     Ingredient.of(Items.EMERALD, Items.EMERALD_BLOCK), false));
         }
     }
