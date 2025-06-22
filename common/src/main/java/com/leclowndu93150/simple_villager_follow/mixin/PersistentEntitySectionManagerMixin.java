@@ -20,7 +20,7 @@ public class PersistentEntitySectionManagerMixin<T extends EntityAccess> {
     @Inject(method = "addEntity", at = @At("HEAD"))
     private void onAddEntity(T pEntity, boolean pWorldGenSpawned, CallbackInfoReturnable<Boolean> cir) {
         if (pEntity instanceof AbstractVillager villager && !villager.level().isClientSide) {
-            villager.goalSelector.addGoal(3, new VillagerFollowGoal(villager, 1.0,
+            villager.goalSelector.addGoal(3, new VillagerFollowGoal(villager, 0.5,
                     stack -> stack.is(Items.EMERALD) || stack.is(Items.EMERALD_BLOCK), false, 10));
         }
     }
